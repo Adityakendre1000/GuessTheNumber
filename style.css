@@ -1,7 +1,7 @@
-body{
+body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color:aliceblue;
+    background-color: aliceblue;
     color: #333;  
     display: flex;
     margin: 0;
@@ -12,9 +12,9 @@ body{
     align-items: center;
 }
 
-#start,#submit{
+#start, #submit {
     font-size: 16px;
-    background-color:rgb(161, 204, 239);
+    background-color: rgb(161, 204, 239);
     padding: 10px 20px;
     text-align: center;
     border: 0;
@@ -22,17 +22,32 @@ body{
     cursor: pointer;
 }
 
-#start:hover,#submit:hover{
+#start:hover, #submit:hover {
     background-color: rgb(140, 163, 228);
 }
 
-#guessed{
+#guessed {
     padding: 10px;
     font-size: 16px;
     width: 100px;
     text-align: center;
 }
 
-.hidden{
+#restart button {
+    font-size: 16px;
+    background-color: rgb(161, 204, 239);
+    padding: 10px 20px;
+    text-align: center;
+    border: 0;
+    border-radius: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#restart button:hover {
+    background-color: rgb(140, 163, 228);
+}
+
+.hidden {
     display: none;
 }
