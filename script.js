@@ -1,7 +1,9 @@
 let min = 0;
 let max = 10;
 let attempt = 3;
-let randomnum;
+let randomnum = 0;
+let curr_streak = 0;
+let max_streak = 0;
 
 document.getElementById('start').addEventListener('click', startGame);
 document.getElementById('submit').addEventListener('click', checkGuess);
@@ -14,6 +16,10 @@ function startGame() {
     document.getElementById('start').classList.add('hidden'); // Hide the start button
     document.getElementById('game').classList.remove('hidden'); // Show the game container
     document.getElementById('restart').classList.add('hidden'); // Hide the restart button
+    
+    document.getElementById('cstreak').textContent = `Current streak = ${curr_streak}`;
+    document.getElementById('mstreak').textContent = `Max streak = ${max_streak}`;
+    document.getElementById('streak').classList.remove('hidden');
 
     document.getElementById('guessed').disabled = false; // Enable the input field
     document.getElementById('submit').disabled = false; // Enable the submit button
@@ -32,6 +38,12 @@ function checkGuess() {
 
     if (guess === randomnum) { // Correct guess
         document.getElementById('feedback').textContent = `🎉🎉😍 Yay!! You guessed the correct number!`;
+        
+        curr_streak++;
+        max_streak = max_streak < curr_streak ? curr_streak : max_streak;
+        document.getElementById('cstreak').textContent = `Current streak = ${curr_streak}`;
+        document.getElementById('mstreak').textContent = `Max streak = ${max_streak}`;
+        
         endGame(); // End the game if the user guesses correctly
     } else {
         attempt--; // Decrease the number of attempts
@@ -41,6 +53,8 @@ function checkGuess() {
         } else {
             document.getElementById('feedback').textContent = `You ran out of attempts. T-T The number was ${randomnum}.`;
             document.getElementById('attempts').textContent = `No attempts left.`;
+            curr_streak = 0;
+            document.getElementById('cstreak').textContent = `Current streak = ${curr_streak}`;
             endGame(); // End the game if attempts are over
         }
     }
@@ -62,7 +76,7 @@ function restartGame() {
 // Disable right-click menu to prevent inspecting
 document.addEventListener('contextmenu', function (e) {
     e.preventDefault(); // Prevent the default context menu from appearing
-    alert('Right-click is disabled on this page.');
+    // alert('Right-click is disabled on this page.');
 });
 
 // Disable inspect element shortcuts
@@ -72,6 +86,6 @@ document.addEventListener('keydown', function (e) {
         (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
         (e.ctrlKey && e.key === 'U')) {
         e.preventDefault(); // Prevent the default behavior of these keys
-        alert('Inspecting is disabled on this page.');
+        // alert('Inspecting is disabled on this page.');
     }
 });

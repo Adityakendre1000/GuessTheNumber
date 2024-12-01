@@ -1,4 +1,4 @@
-body {
+.container {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: aliceblue;
@@ -10,6 +10,14 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+#streak{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-align: left;
 }
 
 #start, #submit {
